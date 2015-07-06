@@ -1,0 +1,11 @@
+spring:
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/dontbealone
+        username: root
+        password: root
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: false
