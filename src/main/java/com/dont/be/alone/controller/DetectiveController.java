@@ -13,14 +13,12 @@ public class DetectiveController {
     private DetectiveRepository detectiveRepository;
 
     @RequestMapping(value = "/detective/{username}", method = RequestMethod.GET)
-    @ResponseBody
-    public Detective getDetective(@PathVariable String username){
+    public @ResponseBody Detective getDetective(@PathVariable String username){
         return detectiveRepository.findByUsername(username);
     }
 
     @RequestMapping(value = "/detective", method = RequestMethod.POST)
-    @ResponseBody
-    public Detective createDetective(@RequestParam String username, @RequestParam String password,
+    public @ResponseBody Detective createDetective(@RequestParam String username, @RequestParam String password,
                                      @RequestParam String email, @RequestParam String phone){
         Detective detective =  new Detective(username, password, email, phone);
         return detectiveRepository.save(detective);

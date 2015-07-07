@@ -14,6 +14,8 @@ public class Detective {
     private String email;
     private String phone;
 
+    public Detective() {}
+
     public Detective(String username, String password, String email, String phone) {
         this.username = username;
         this.password = password;
