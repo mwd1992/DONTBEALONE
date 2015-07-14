@@ -5,6 +5,8 @@ import com.dont.be.alone.service.DetectiveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api")
 public class DetectiveController {
@@ -12,15 +14,22 @@ public class DetectiveController {
     @Autowired
     private DetectiveRepository detectiveRepository;
 
-    @RequestMapping(value = "/detective/{username}", method = RequestMethod.GET)
-    public @ResponseBody Detective getDetective(@PathVariable String username){
-        return detectiveRepository.findByUsername(username);
+    @RequestMapping(value = "/detective", method = RequestMethod.GET)
+    public @ResponseBody Detective getDetective(@RequestParam String username, @RequestParam String email){
+        Optional<Detective> detective;
+        Optional<String> username_ = Optional.of(username);
+        if (username_.isPresent())
+            detective = Optional.of(detectiveRepository.findByUsername(username));
+        else
+            detective = Optional.of(detectiveRepository.findByEmail(email));
+        return detective.get();
     }
 
     @RequestMapping(value = "/detective", method = RequestMethod.POST)
     public @ResponseBody Detective createDetective(@RequestParam String username, @RequestParam String password,
                                      @RequestParam String email, @RequestParam String phone){
         Detective detective =  new Detective(username, password, email, phone);
-        return detectiveRepository.save(detective);
+        detectiveRepository.save(detective);
+        return detective;
     }
 }

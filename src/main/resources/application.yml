@@ -7,5 +7,5 @@ spring:
 
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: drop-create
         show-sql: false

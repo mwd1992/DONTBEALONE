@@ -1,0 +1,1 @@
+insert into detective(id, username, email, password, phone, question) values(1, 'ward', 'ward.miao@xplusz.com', 'password', '123456', 'your password');

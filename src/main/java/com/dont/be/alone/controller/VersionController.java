@@ -12,6 +12,7 @@ public class VersionController {
 
     @RequestMapping(value = "/version", method = RequestMethod.GET)
     public @ResponseBody Version getAPIVersion(){
-        return new Version("1.0");
+        Version version = new Version("1.0");
+        return version;
     }
 }

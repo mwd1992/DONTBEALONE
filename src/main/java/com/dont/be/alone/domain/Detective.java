@@ -13,6 +13,7 @@ public class Detective {
     private String password;
     private String email;
     private String phone;
+    private String question;
 
     public Detective() {}
 
@@ -21,5 +22,9 @@ public class Detective {
         this.password = password;
         this.email = email;
         this.phone = phone;
+    }
+
+    public String getQuestion(){
+        return question;
     }
 }
