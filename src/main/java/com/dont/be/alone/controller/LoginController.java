@@ -16,19 +16,17 @@ public class LoginController {
     private DetectiveRepository detectiveRepository;
 
     @RequestMapping(value = "/login")
-    @ResponseBody
     public Detective login(@RequestParam String username,@RequestParam String email, @RequestParam String password){
-        Detective detective;
+        Optional<Detective> detective;
         if (username != null && !username.equals("")) {
-            detective = detectiveRepository.findByUsernameAndPassword(username, password);
+            detective = Optional.of(detectiveRepository.findByUsernameAndPassword(username, password));
         } else {
-            detective = detectiveRepository.findByEmailAndPassword(email, password);
+            detective =  Optional.of(detectiveRepository.findByEmailAndPassword(email, password));
         }
-        return detective;
+        return detective.get();
     }
 
     @RequestMapping(value = "/question")
-    @ResponseBody
     public String getUserQuestion(@RequestParam String username, @RequestParam String email){
         Optional<Detective> detective;
         if (username != null && username.equals("")){

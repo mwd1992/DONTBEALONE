@@ -1,12 +1,14 @@
 package com.dont.be.alone.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 @Entity
 public class Detective {
     @Id
+    @GeneratedValue
     private long id;
 
     private String username;

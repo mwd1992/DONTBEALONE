@@ -15,7 +15,7 @@ public class DetectiveController {
     private DetectiveRepository detectiveRepository;
 
     @RequestMapping(value = "/detective", method = RequestMethod.GET)
-    public @ResponseBody Detective getDetective(@RequestParam String username, @RequestParam String email){
+    public Detective getDetective(@RequestParam String username, @RequestParam String email){
         Optional<Detective> detective;
         Optional<String> username_ = Optional.of(username);
         if (username_.isPresent())
@@ -26,7 +26,7 @@ public class DetectiveController {
     }
 
     @RequestMapping(value = "/detective", method = RequestMethod.POST)
-    public @ResponseBody Detective createDetective(@RequestParam String username, @RequestParam String password,
+    public Detective createDetective(@RequestParam String username, @RequestParam String password,
                                      @RequestParam String email, @RequestParam String phone){
         Detective detective =  new Detective(username, password, email, phone);
         detectiveRepository.save(detective);

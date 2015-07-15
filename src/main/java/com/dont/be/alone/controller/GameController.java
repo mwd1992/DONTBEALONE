@@ -15,12 +15,12 @@ public class GameController {
     private GameRepository gameRepository;
 
     @RequestMapping(value = "/games", method = RequestMethod.GET)
-    public @ResponseBody List<Game> listAllGames(){
+    public List<Game> listAllGames(){
         return gameRepository.findAll();
     }
 
     @RequestMapping(value = "/games/{author}", method = RequestMethod.GET)
-         public @ResponseBody List<Game> listAllGamesByAuthor(@PathVariable String author){
+         public List<Game> listAllGamesByAuthor(@PathVariable String author){
         return gameRepository.findByAuthor(author);
     }
 
@@ -30,7 +30,7 @@ public class GameController {
     }
 
     @RequestMapping(value = "/game", method = RequestMethod.POST)
-    public @ResponseBody Game createGame(@RequestParam String author, @RequestParam String summary, @RequestParam String truth){
+    public Game createGame(@RequestParam String author, @RequestParam String summary, @RequestParam String truth){
         return gameRepository.save(new Game(author, summary, truth));
     }
 }
