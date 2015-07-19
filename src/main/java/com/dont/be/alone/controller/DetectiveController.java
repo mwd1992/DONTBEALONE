@@ -15,11 +15,11 @@ public class DetectiveController {
     private DetectiveRepository detectiveRepository;
 
     @RequestMapping(value = "/detective", method = RequestMethod.GET)
-    public Detective getDetective(@RequestParam String username, @RequestParam String email){
+    public Detective getDetective(@RequestParam String username, @RequestParam(defaultValue = "") String email){
         Optional<Detective> detective;
         Optional<String> username_ = Optional.of(username);
         if (username_.isPresent())
-            detective = Optional.of(detectiveRepository.findByUsername(username));
+            detective = Optional.ofNullable(detectiveRepository.findByUsername(username));
         else
             detective = Optional.of(detectiveRepository.findByEmail(email));
         return detective.get();
@@ -27,8 +27,8 @@ public class DetectiveController {
 
     @RequestMapping(value = "/detective", method = RequestMethod.POST)
     public Detective createDetective(@RequestParam String username, @RequestParam String password,
-                                     @RequestParam String email, @RequestParam String phone){
-        Detective detective =  new Detective(username, password, email, phone);
+                                     @RequestParam String email, @RequestParam String phone, @RequestParam String question){
+        Detective detective =  new Detective(username, password, email, phone, question);
         detectiveRepository.save(detective);
         return detective;
     }

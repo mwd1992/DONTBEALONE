@@ -22,4 +22,16 @@ public class Game {
         this.summary = summary;
         this.truth = truth;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public String getTruth() {
+        return truth;
+    }
 }
