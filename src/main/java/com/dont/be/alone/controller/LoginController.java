@@ -16,7 +16,7 @@ public class LoginController {
     private DetectiveRepository detectiveRepository;
 
     @RequestMapping(value = "/login")
-    public Detective login(@RequestParam String username,@RequestParam String email, @RequestParam String password){
+    public Detective login(@RequestParam(required = false) String username,@RequestParam(required = false) String email, @RequestParam String password){
         Optional<Detective> detective;
         if (username != null && !username.equals("")) {
             detective = Optional.of(detectiveRepository.findByUsernameAndPassword(username, password));

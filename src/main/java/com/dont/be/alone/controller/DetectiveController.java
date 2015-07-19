@@ -15,7 +15,7 @@ public class DetectiveController {
     private DetectiveRepository detectiveRepository;
 
     @RequestMapping(value = "/detective", method = RequestMethod.GET)
-    public Detective getDetective(@RequestParam String username, @RequestParam(defaultValue = "") String email){
+    public Detective getDetective(@RequestParam(required = false) String username, @RequestParam(required = false) String email){
         Optional<Detective> detective;
         Optional<String> username_ = Optional.of(username);
         if (username_.isPresent())
