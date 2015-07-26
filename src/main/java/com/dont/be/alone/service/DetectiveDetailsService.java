@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 @Service
-public class DetectiveService implements UserDetailsService{
+public class DetectiveDetailsService implements UserDetailsService{
 
     @Autowired
     private DetectiveRepository detectiveRepository;
