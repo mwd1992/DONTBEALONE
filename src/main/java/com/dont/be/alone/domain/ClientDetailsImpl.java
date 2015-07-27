@@ -6,11 +6,13 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 @Entity
+@Table(name = "client_details")
 public class ClientDetailsImpl implements ClientDetails {
 
     @Id
